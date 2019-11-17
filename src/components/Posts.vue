@@ -1,5 +1,6 @@
 <template>
   <section id="posts">
+    <h1>Sortable Post List</h1>
     <ul>
       <transition-group name="slide">
         <template v-for="(post, index) in posts">
@@ -40,18 +41,32 @@ export default {
     },
     moveUp(idx) {
       if (idx > 0 && idx <= this.posts.length) {
-        this.swap(this.posts, idx, idx - 1);
+        const postId = this.posts[idx].id;
+        const endIdx = idx - 1;
+        this.swap(this.posts, idx, endIdx);
+        this.addActionToHistory(postId, idx, endIdx);
       }
     },
     moveDown(idx) {
       if (idx < this.posts.length - 1 && idx >= 0) {
+        const postId = this.posts[idx].id;
+        const endIdx = idx + 1;
         this.swap(this.posts, idx, idx + 1);
+        this.addActionToHistory(postId, idx, endIdx);
       }
     },
     swap(arr, x, y) {
       const temp = arr[x];
       arr.splice(x, 1, arr[y]);
       arr.splice(y, 1, temp);
+    },
+    addActionToHistory(postId, idx, endIdx) {
+      this.$store.commit("history/addAction", {
+        postId,
+        idx,
+        endIdx,
+        posts: [...this.posts]
+      });
     }
   }
 };
@@ -62,8 +77,9 @@ li {
   display: block;
   padding: 20px;
   border: 1px solid gray;
-  margin: 5px 0;
-  width: 500px;
+  margin: 15px 0;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .slide-move {

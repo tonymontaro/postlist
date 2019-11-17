@@ -27,7 +27,6 @@ describe("Component", () => {
       localVue,
       store
     });
-    console.log(wrapper.html());
     expect(wrapper.findAll('span[name="slide"]').length).toBe(1);
     expect(wrapper).toMatchSnapshot();
   });
