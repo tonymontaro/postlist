@@ -7,13 +7,13 @@ export default {
   mutations: {
     addAction(state, { postId, idx, endIdx, posts }) {
       state.cursor = null;
-      state.history.push({
+      state.history.unshift({
+        id: Date.now(),
         postId,
         idx,
         endIdx,
         posts
       });
-      console.log(postId, idx, endIdx);
     }
   }
 };
