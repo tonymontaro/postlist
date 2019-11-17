@@ -1,16 +1,19 @@
 <template>
   <section id="posts">
     <ul>
-      <li v-for="post in posts" :key="post.id">
-        {{ post.id }}. {{ post.title }}
-      </li>
+      <template v-for="post in posts">
+        <Post :key="post.id" :post="post" />
+      </template>
     </ul>
   </section>
 </template>
 
 <script>
+import Post from "./Post";
+
 export default {
   name: "posts",
+  components: { Post },
   data() {
     return {};
   },

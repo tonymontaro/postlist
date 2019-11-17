@@ -1,6 +1,6 @@
 import axios from "axios";
 import Vuex from "vuex";
-import { createLocalVue, mount } from "@vue/test-utils";
+import { createLocalVue, mount, shallowMount } from "@vue/test-utils";
 
 import Posts from "@/components/Posts";
 import postStore from "@/store/posts";
@@ -9,16 +9,61 @@ import { postUrl } from "@/config";
 const localVue = createLocalVue();
 localVue.use(Vuex);
 
-const state = { posts: { posts: [] } };
-const actions = { "posts/getPosts": jest.fn() };
-const mutations = { "posts/getPostsSuccess": jest.fn() };
+describe("Component", () => {
+  test("renders post items", () => {
+    const store = new Vuex.Store({
+      state: {
+        posts: {
+          posts: [
+            { id: 1, title: "1" },
+            { id: 2, title: "2" }
+          ]
+        }
+      },
+      actions: { "posts/getPosts": jest.fn() }
+    });
+
+    const wrapper = shallowMount(Posts, {
+      localVue,
+      store
+    });
+
+    expect(wrapper.findAll("post-stub").length).toBe(2);
+    expect(wrapper).toMatchSnapshot();
+  });
+});
+
+describe("Methods", () => {
+  let store;
+  let actions;
+  let state;
+
+  beforeEach(() => {
+    state = { posts: { posts: [] } };
+    actions = { "posts/getPosts": jest.fn() };
+    store = new Vuex.Store({
+      state,
+      actions
+    });
+  });
+
+  test("getPosts calls the getPosts action", () => {
+    const expected = [{ id: 1, title: "Title" }];
+    axios.get.mockResolvedValue({ data: expected });
+    const wrapper = mount(Posts, {
+      localVue,
+      store
+    });
+
+    expect(actions["posts/getPosts"]).toHaveBeenCalledTimes(1);
+  });
+});
 
 describe("Store", () => {
   test("store loads successfully", () => {
     const store = new Vuex.Store({
-      actions,
-      state,
-      mutations
+      state: { posts: { posts: [] } },
+      actions: { "posts/getPosts": jest.fn() }
     });
     const wrapper = mount(Posts, {
       localVue,
