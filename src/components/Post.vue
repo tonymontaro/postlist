@@ -1,9 +1,11 @@
 <template>
   <li class="post">
-    Post {{ post.id }}
+    {{ post.id }}. {{ post.title }}
     <br />
-    <button v-if="index > 0" @click="() => moveUp(index)">up</button>
-    <button v-if="!isLastPost" @click="() => moveDown(index)">down</button>
+    <button v-if="index > 0" @click="() => moveUp(index, post.id)">up</button>
+    <button v-if="!isLastPost" @click="() => moveDown(index, post.id)">
+      down
+    </button>
   </li>
 </template>
 

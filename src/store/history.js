@@ -5,14 +5,12 @@ export default {
     history: []
   },
   mutations: {
-    addAction(state, { postId, idx, endIdx, posts }) {
+    addAction(state, { word, prevState }) {
       state.cursor = null;
       state.history.unshift({
-        id: Date.now(),
-        postId,
-        idx,
-        endIdx,
-        posts
+        id: Date.now() + Math.floor(Math.random() * 1000).toString(),
+        word,
+        prevState
       });
     }
   }

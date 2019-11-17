@@ -2,6 +2,8 @@
 
 exports[`Component renders post item 1`] = `
 <li class="post" key="1">
-  Post 1
-  <br> <button>up</button> <button>down</button></li>
+  1. Title
+  <br> <button>up</button> <button>
+    down
+  </button></li>
 `;

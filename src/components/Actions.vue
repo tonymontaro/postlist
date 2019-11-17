@@ -4,7 +4,11 @@
     <ul>
       <transition-group name="slide">
         <template v-for="action in history">
-          <Action :action="action" :key="action.id" />
+          <Action
+            :action="action"
+            :key="action.id"
+            :replyHistory="replyHistory"
+          />
         </template>
       </transition-group>
     </ul>
@@ -16,15 +20,16 @@ import Action from "./Action";
 export default {
   name: "actions",
   components: { Action },
-  data() {
-    return {};
-  },
   computed: {
     history() {
       return this.$store.state.history.history;
     }
   },
-  methods: {}
+  methods: {
+    replyHistory(posts) {
+      this.$store.commit("posts/replyHistory", posts);
+    }
+  }
 };
 </script>
 
