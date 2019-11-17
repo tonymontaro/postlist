@@ -1,6 +1,6 @@
 <template>
   <li class="post">
-    {{ post.id }}. {{ post.title }}
+    Post {{ post.id }}
     <br />
     <button v-if="index > 0" @click="() => moveUp(index)">up</button>
     <button v-if="!isLastPost" @click="() => moveDown(index)">down</button>
