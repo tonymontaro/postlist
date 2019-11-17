@@ -1,18 +1,14 @@
 export default {
   namespaced: true,
   state: {
-    cursor: null,
     history: []
   },
   mutations: {
-    addAction(state, { postId, idx, endIdx, posts }) {
-      state.cursor = null;
+    addAction(state, { word, prevState }) {
       state.history.unshift({
-        id: Date.now(),
-        postId,
-        idx,
-        endIdx,
-        posts
+        id: Date.now() + Math.floor(Math.random() * 1000).toString(),
+        word,
+        prevState
       });
     }
   }

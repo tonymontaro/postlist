@@ -29,6 +29,11 @@ export default {
       posts: []
     };
   },
+  computed: {
+    storePosts() {
+      return this.$store.state.posts.posts;
+    }
+  },
   mounted() {
     this.getPosts();
   },
@@ -36,23 +41,22 @@ export default {
     async getPosts() {
       if (this.posts.length == 0) {
         await this.$store.dispatch("posts/getPosts");
-        this.posts = this.$store.state.posts.posts;
       }
     },
-    moveUp(idx) {
+    moveUp(idx, postId) {
       if (idx > 0 && idx <= this.posts.length) {
-        const postId = this.posts[idx].id;
         const endIdx = idx - 1;
+        const prevState = [...this.posts];
         this.swap(this.posts, idx, endIdx);
-        this.addActionToHistory(postId, idx, endIdx);
+        this.addActionToHistory(postId, idx, endIdx, prevState);
       }
     },
-    moveDown(idx) {
+    moveDown(idx, postId) {
       if (idx < this.posts.length - 1 && idx >= 0) {
-        const postId = this.posts[idx].id;
         const endIdx = idx + 1;
-        this.swap(this.posts, idx, idx + 1);
-        this.addActionToHistory(postId, idx, endIdx);
+        const prevState = [...this.posts];
+        this.swap(this.posts, idx, endIdx);
+        this.addActionToHistory(postId, idx, endIdx, prevState);
       }
     },
     swap(arr, x, y) {
@@ -60,13 +64,15 @@ export default {
       arr.splice(x, 1, arr[y]);
       arr.splice(y, 1, temp);
     },
-    addActionToHistory(postId, idx, endIdx) {
-      this.$store.commit("history/addAction", {
-        postId,
-        idx,
-        endIdx,
-        posts: [...this.posts]
-      });
+    addActionToHistory(postId, idx, endIdx, prevState) {
+      const word = `Moved post ${postId} from index ${idx +
+        1} to index ${endIdx + 1}`;
+      this.$store.commit("history/addAction", { word, prevState });
+    }
+  },
+  watch: {
+    storePosts: function() {
+      this.posts = this.storePosts;
     }
   }
 };

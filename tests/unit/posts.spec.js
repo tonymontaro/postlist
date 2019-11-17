@@ -4,7 +4,7 @@ import { createLocalVue, mount, shallowMount } from "@vue/test-utils";
 
 import Posts from "@/components/Posts";
 import postStore from "@/store/posts";
-import { postUrl } from "@/config";
+import { POST_URL } from "@/config";
 
 const localVue = createLocalVue();
 localVue.use(Vuex);
@@ -80,7 +80,7 @@ describe("Store", () => {
 
     expect(res).toEqual(expected);
     expect(axios.get).toHaveBeenCalledTimes(1);
-    expect(axios.get).toHaveBeenCalledWith(postUrl);
+    expect(axios.get).toHaveBeenCalledWith(POST_URL);
   });
 
   test("mutations.getPostsSuccess sets the state to first five items", () => {
