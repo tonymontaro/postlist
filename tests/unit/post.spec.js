@@ -6,7 +6,12 @@ describe("Component", () => {
   test("renders post item", () => {
     const wrapper = mount(Post, {
       propsData: {
-        post: { id: 1, title: "Title" }
+        key: 1,
+        post: { id: 1, title: "Title" },
+        index: 3,
+        moveUp: () => {},
+        moveDown: () => {},
+        isLastPost: false
       }
     });
 

@@ -1,8 +1,15 @@
 <template>
   <section id="posts">
     <ul>
-      <template v-for="post in posts">
-        <Post :key="post.id" :post="post" />
+      <template v-for="(post, index) in posts">
+        <Post
+          :key="post.id"
+          :post="post"
+          :index="index"
+          :moveUp="moveUp"
+          :moveDown="moveDown"
+          :isLastPost="index == posts.length - 1 ? true : false"
+        />
       </template>
     </ul>
   </section>
@@ -30,6 +37,12 @@ export default {
       if (this.posts.length == 0) {
         await this.$store.dispatch("posts/getPosts");
       }
+    },
+    moveUp(idx) {
+      this.$store.commit("posts/moveUp", idx);
+    },
+    moveDown(idx) {
+      this.$store.commit("posts/moveDown", idx);
     }
   }
 };
