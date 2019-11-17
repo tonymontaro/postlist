@@ -5,7 +5,9 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "test:unit": "vue-cli-service test:unit",
+    "test:unit": "jest test",
+    "test:watch": "jest test --watch",
+    "test:coverage": "jest test --collect-coverage",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
@@ -23,6 +25,7 @@
     "@vue/eslint-config-prettier": "^5.0.0",
     "@vue/test-utils": "1.0.0-beta.29",
     "babel-eslint": "^10.0.3",
+    "codecov": "^3.6.1",
     "eslint": "^5.16.0",
     "eslint-plugin-prettier": "^3.1.1",
     "eslint-plugin-vue": "^5.0.0",
