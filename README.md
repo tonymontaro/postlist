@@ -40,3 +40,8 @@ npm run lint
 ### Customize configuration
 
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+## Credits
+
+- Mocking axios: https://www.leighhalliday.com/mocking-axios-in-jest-testing-async-functions
+- Testing Vue Components: https://github.com/vueschool/testing-vue-components
