@@ -1,13 +1,14 @@
 import axios from "axios";
+import { postUrl } from "../config";
 
-export const posts = {
+export default {
   namespaced: true,
   state: {
     posts: []
   },
   actions: {
     async getPosts({ commit }) {
-      const res = await axios.get(`https://jsonplaceholder.typicode.com/posts`);
+      const res = await axios.get(postUrl);
       commit("getPostsSuccess", res.data);
       return res.data;
     }

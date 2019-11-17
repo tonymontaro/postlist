@@ -12,9 +12,12 @@
 export default {
   name: "posts",
   data() {
-    return {
-      posts: this.$store.state.posts.posts
-    };
+    return {};
+  },
+  computed: {
+    posts() {
+      return this.$store.state.posts.posts;
+    }
   },
   mounted() {
     this.getPosts();
