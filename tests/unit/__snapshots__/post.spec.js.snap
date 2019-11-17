@@ -1,3 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Component renders post item 1`] = `<li class="post">1. Title</li>`;
+exports[`Component renders post item 1`] = `
+<li class="post" key="1">
+  1. Title
+  <br> <button>up</button> <button>down</button></li>
+`;

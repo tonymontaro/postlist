@@ -23,12 +23,12 @@ describe("Component", () => {
       actions: { "posts/getPosts": jest.fn() }
     });
 
-    const wrapper = shallowMount(Posts, {
+    const wrapper = mount(Posts, {
       localVue,
       store
     });
-
-    expect(wrapper.findAll("post-stub").length).toBe(2);
+    console.log(wrapper.html());
+    expect(wrapper.findAll('span[name="slide"]').length).toBe(1);
     expect(wrapper).toMatchSnapshot();
   });
 });
