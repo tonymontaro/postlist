@@ -2,7 +2,7 @@
 
 exports[`Component renders post items 1`] = `
 <section id="posts">
-  <h1>Sortable Post List</h1>
+  <h1 class="text-xl text-white mb-5">Sortable Post List</h1>
   <ul><span name="slide"></span></ul>
 </section>
 `;
