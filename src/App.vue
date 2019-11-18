@@ -3,14 +3,14 @@
     <div class="absolute skewedBox bg-purple-600 z-0 w-full h-full"></div>
     <div class="m-auto pt-10 max-w-6xl">
       <Posts :class="rowClasses" />
-      <Actions :class="rowClasses" />
+      <History :class="rowClasses" />
     </div>
   </div>
 </template>
 
 <script>
 import Posts from "./components/Posts.vue";
-import Actions from "./components/Actions.vue";
+import History from "./components/History.vue";
 
 export default {
   name: "app",
@@ -30,7 +30,7 @@ export default {
   },
   components: {
     Posts,
-    Actions
+    History
   }
 };
 </script>

@@ -1,12 +1,12 @@
 <template>
-  <section id="actions">
+  <section>
     <h1 :class="headerStyle">List of actions committed</h1>
     <ul :class="ulStyle">
       <transition-group name="slide" class="w-full">
-        <template v-for="action in history">
-          <Action
-            :action="action"
-            :key="action.id"
+        <template v-for="historyItem in history">
+          <HistoryItem
+            :historyItem="historyItem"
+            :key="historyItem.id"
             :replyHistory="replyHistory"
           />
         </template>
@@ -15,12 +15,12 @@
   </section>
 </template>
 <script>
-import Action from "./Action";
+import HistoryItem from "./HistoryItem";
 import { BOX_STYLE } from "@/config";
 
 export default {
   name: "actions",
-  components: { Action },
+  components: { HistoryItem },
   data() {
     return {
       headerStyle: [...BOX_STYLE, "text-xl"],

@@ -9,7 +9,7 @@ import { POST_URL } from "@/config";
 const localVue = createLocalVue();
 localVue.use(Vuex);
 
-describe("Component", () => {
+describe("Posts Component", () => {
   let testPosts;
   let store;
   let actions;
@@ -24,7 +24,7 @@ describe("Component", () => {
       { id: 2, title: "2" }
     ];
     actions = { "posts/getPosts": jest.fn() };
-    mutations = { "history/addAction": jest.fn() };
+    mutations = { "history/addHistory": jest.fn() };
     store = new Vuex.Store({
       state: {
         posts: {
@@ -55,6 +55,16 @@ describe("Component", () => {
     expect(wrapper).toMatchSnapshot();
   });
 
+  test("swap method can swap two items in an array", () => {
+    const { swap } = Posts.methods;
+    const arr = [1, 2, 3, 4];
+    const [firstIdx, secondIdx] = [0, 3];
+
+    swap(arr, firstIdx, secondIdx);
+
+    expect(arr).toEqual([4, 2, 3, 1]);
+  });
+
   test("clicking the up/down arrow buttons adds action to history", async () => {
     wrapper = mount(Posts, {
       localVue,
@@ -69,9 +79,9 @@ describe("Component", () => {
 
     await localVue.nextTick();
     wrapper.find(".chevron-up").trigger("click");
-    expect(mutations["history/addAction"]).toHaveBeenCalledTimes(1);
+    expect(mutations["history/addHistory"]).toHaveBeenCalledTimes(1);
     wrapper.find(".chevron-down").trigger("click");
-    expect(mutations["history/addAction"]).toHaveBeenCalledTimes(2);
+    expect(mutations["history/addHistory"]).toHaveBeenCalledTimes(2);
   });
 });
 

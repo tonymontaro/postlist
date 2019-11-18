@@ -2,8 +2,8 @@ import { mount } from "@vue/test-utils";
 
 import Post from "@/components/Post";
 
-describe("Component", () => {
-  test("renders post item", () => {
+describe("Post Component", () => {
+  test("renders post item with up and down links", () => {
     const wrapper = mount(Post, {
       propsData: {
         key: 1,
@@ -15,6 +15,7 @@ describe("Component", () => {
       }
     });
 
+    expect(wrapper.findAll("a")).toHaveLength(2);
     expect(wrapper).toMatchSnapshot();
   });
 });
