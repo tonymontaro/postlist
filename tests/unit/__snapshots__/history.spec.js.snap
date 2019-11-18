@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`History Component renders history items 1`] = `
+<section>
+  <h1 class="p-3 py-5 bg-white shadow-lg rounded-sm white-box w-full text-xl">List of actions committed</h1>
+  <ul class="p-3 py-5 bg-white shadow-lg rounded-sm white-box w-full p-5 bg-gray-200"><span name="slide" class="w-full"><historyitem-stub replyhistory="function () { [native code] }" historyitem="[object Object]"></historyitem-stub><historyitem-stub replyhistory="function () { [native code] }" historyitem="[object Object]"></historyitem-stub><historyitem-stub replyhistory="function () { [native code] }" historyitem="[object Object]"></historyitem-stub><historyitem-stub replyhistory="function () { [native code] }" historyitem="[object Object]"></historyitem-stub></span></ul>
+</section>
+`;

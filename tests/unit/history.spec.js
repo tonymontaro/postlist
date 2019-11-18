@@ -10,7 +10,6 @@ localVue.use(Vuex);
 describe("History Component", () => {
   let testHistoryItems;
   let store;
-  let actions;
   let mutations;
   let wrapper;
 
@@ -21,20 +20,33 @@ describe("History Component", () => {
       { id: 1, word: "Item 1 moved", prevState: [] },
       { id: 2, word: "Item 2 moved", prevState: [] }
     ];
-    actions = { "posts/getPosts": jest.fn() };
-    mutations = { "history/addAction": jest.fn() };
+    mutations = {
+      "history/addAction": jest.fn(),
+      "posts/replyHistory": jest.fn()
+    };
     store = new Vuex.Store({
       state: {
-        posts: {
-          posts: testHistoryItems
+        history: {
+          history: testHistoryItems
         }
       },
-      actions,
       mutations
     });
   });
 
-  test("renders post items", async () => {
-    console.log("ready");
+  afterEach(() => {
+    wrapper.destroy();
+  });
+
+  test("renders history items", async () => {
+    wrapper = shallowMount(History, {
+      localVue,
+      store,
+      computed: {
+        history: () => testHistoryItems
+      }
+    });
+    expect(wrapper.findAll("historyitem-stub").length).toBe(4);
+    expect(wrapper).toMatchSnapshot();
   });
 });
