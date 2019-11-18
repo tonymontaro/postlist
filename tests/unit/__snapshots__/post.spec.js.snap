@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Component renders post item 1`] = `
+exports[`Post Component renders post item with up and down links 1`] = `
 <li class="p-3 py-5 bg-white shadow-lg rounded-sm white-box w-full mb-5 relative pr-10" key="1">
   1. Title
   <a href="#" class="chevron-down absolute"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" icon="CheveronDown" class="w-5 absolute ">

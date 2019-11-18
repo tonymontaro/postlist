@@ -1,5 +1,5 @@
 <template>
-  <section id="posts">
+  <section>
     <h1 class="text-xl text-white mb-5">Sortable Post List</h1>
     <ul>
       <transition-group name="slide">
@@ -41,6 +41,7 @@ export default {
     async getPosts() {
       if (this.posts.length == 0) {
         await this.$store.dispatch("posts/getPosts");
+        this.posts = this.storePosts;
       }
     },
     moveUp(idx, postId) {
@@ -67,7 +68,7 @@ export default {
     addActionToHistory(postId, idx, endIdx, prevState) {
       const word = `Moved post ${postId} from index ${idx +
         1} to index ${endIdx + 1}`;
-      this.$store.commit("history/addAction", { word, prevState });
+      this.$store.commit("history/addHistory", { word, prevState });
     }
   },
   watch: {

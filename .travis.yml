@@ -6,3 +6,5 @@ install:
   - npm install
 script:
   - npm run test:coverage
+after_success:
+  - codecov

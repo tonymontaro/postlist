@@ -1,7 +1,10 @@
 <template>
   <li :class="boxStype">
-    {{ action.word }}
-    <button :class="btnStyle" @click="() => replyHistory(action.prevState)">
+    {{ historyItem.word }}
+    <button
+      :class="btnStyle"
+      @click="() => replyHistory(historyItem.prevState)"
+    >
       Time travel
     </button>
   </li>
@@ -11,8 +14,8 @@
 import { BOX_STYLE } from "@/config";
 
 export default {
-  name: "action",
-  props: ["action", "replyHistory"],
+  name: "historyItem",
+  props: ["historyItem", "replyHistory"],
   data() {
     return {
       boxStype: [...BOX_STYLE],
