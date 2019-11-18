@@ -3,6 +3,6 @@
 exports[`Component renders post items 1`] = `
 <section id="posts">
   <h1 class="text-xl text-white mb-5">Sortable Post List</h1>
-  <ul><span name="slide"></span></ul>
+  <ul><span name="slide"><post-stub movedown="function () { [native code] }" moveup="function () { [native code] }" post="[object Object]" index="0"></post-stub><post-stub movedown="function () { [native code] }" moveup="function () { [native code] }" post="[object Object]" index="1"></post-stub><post-stub movedown="function () { [native code] }" moveup="function () { [native code] }" post="[object Object]" index="2"></post-stub><post-stub islastpost="true" movedown="function () { [native code] }" moveup="function () { [native code] }" post="[object Object]" index="3"></post-stub></span></ul>
 </section>
 `;

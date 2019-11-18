@@ -41,6 +41,7 @@ export default {
     async getPosts() {
       if (this.posts.length == 0) {
         await this.$store.dispatch("posts/getPosts");
+        this.posts = this.storePosts;
       }
     },
     moveUp(idx, postId) {

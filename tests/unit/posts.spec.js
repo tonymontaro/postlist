@@ -10,25 +10,68 @@ const localVue = createLocalVue();
 localVue.use(Vuex);
 
 describe("Component", () => {
-  test("renders post items", () => {
-    const store = new Vuex.Store({
+  let testPosts;
+  let store;
+  let actions;
+  let mutations;
+  let wrapper;
+
+  beforeEach(() => {
+    testPosts = [
+      { id: 7, title: "7" },
+      { id: 42, title: "42" },
+      { id: 1, title: "1" },
+      { id: 2, title: "2" }
+    ];
+    actions = { "posts/getPosts": jest.fn() };
+    mutations = { "history/addAction": jest.fn() };
+    store = new Vuex.Store({
       state: {
         posts: {
-          posts: [
-            { id: 1, title: "1" },
-            { id: 2, title: "2" }
-          ]
+          posts: testPosts
         }
       },
-      actions: { "posts/getPosts": jest.fn() }
+      actions,
+      mutations
+    });
+  });
+
+  afterEach(() => {
+    wrapper.destroy();
+  });
+
+  test("renders post items", async () => {
+    wrapper = shallowMount(Posts, {
+      localVue,
+      store,
+      computed: {
+        storePosts: () => testPosts
+      }
     });
 
-    const wrapper = mount(Posts, {
-      localVue,
-      store
-    });
-    expect(wrapper.findAll('span[name="slide"]').length).toBe(1);
+    await localVue.nextTick();
+    expect(wrapper.findAll("post-stub").length).toBe(4);
+    expect(actions["posts/getPosts"]).toHaveBeenCalledTimes(1);
     expect(wrapper).toMatchSnapshot();
+  });
+
+  test("clicking the up/down arrow buttons adds action to history", async () => {
+    wrapper = mount(Posts, {
+      localVue,
+      store,
+      computed: {
+        storePosts: () => [...testPosts]
+      },
+      methods: {
+        swap: jest.fn()
+      }
+    });
+
+    await localVue.nextTick();
+    wrapper.find(".chevron-up").trigger("click");
+    expect(mutations["history/addAction"]).toHaveBeenCalledTimes(1);
+    wrapper.find(".chevron-down").trigger("click");
+    expect(mutations["history/addAction"]).toHaveBeenCalledTimes(2);
   });
 });
 
