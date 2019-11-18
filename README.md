@@ -2,9 +2,12 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/8c3f7092185aafba9999/maintainability)](https://codeclimate.com/github/tonymontaro/postlist/maintainability)
 [![codecov](https://codecov.io/gh/tonymontaro/postlist/branch/master/graph/badge.svg)](https://codecov.io/gh/tonymontaro/postlist)
 
-# postlist
+# PostList
 
-Sortable Post List - VueJs Challenge demonstrating working knowledge of Vuex, Animation, State Management, Events, Testing, and CI/CD.
+Sortable Post List - Challenge to demonstrate the following; VueJs, Vuex, Animation, State Management, Events, Testing, and CI/CD.
+The application is a sortable post list with slide animations and a time-travel feature. Actions (moving a post up or down) are recorded in History, and the user can go back to previous states.
+
+Note: The time-travel button takes you to a previous state, just before the action was performed.
 
 [Live Demo](https://postlist-temper.netlify.com/)
 
@@ -24,11 +27,7 @@ npm install
 npm run serve
 ```
 
-### Compiles and minifies for production
-
-```
-npm run build
-```
+## Testing
 
 ### Run unit tests
 
@@ -48,11 +47,25 @@ npm run test:coverage
 npm run test:watch
 ```
 
-### Lints and fixes files
+### Lint files
 
 ```
 npm run lint
 ```
+
+## Deployment
+
+Continuous Delivery was set up using Netlify. When a pull request is created, the changes are automatically deployed to a review server for inspection. When the pull request is merged to master, the production site is automatically re-deployed with the latest changes.
+
+To deploy this project on your Server;
+
+- compile and minify static files with
+
+```
+npm run build
+```
+
+- serve the static files found in the _dist_ folder
 
 ## Credits
 
