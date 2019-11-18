@@ -1,8 +1,8 @@
 <template>
   <section id="actions">
-    <h1>List of actions committed</h1>
-    <ul>
-      <transition-group name="slide">
+    <h1 :class="headerStyle">List of actions committed</h1>
+    <ul :class="ulStyle">
+      <transition-group name="slide" class="w-full">
         <template v-for="action in history">
           <Action
             :action="action"
@@ -16,10 +16,17 @@
 </template>
 <script>
 import Action from "./Action";
+import { BOX_STYLE } from "@/config";
 
 export default {
   name: "actions",
   components: { Action },
+  data() {
+    return {
+      headerStyle: [...BOX_STYLE, "text-xl"],
+      ulStyle: [...BOX_STYLE, "p-5", "bg-gray-200"]
+    };
+  },
   computed: {
     history() {
       return this.$store.state.history.history;
@@ -34,15 +41,6 @@ export default {
 </script>
 
 <style scoped>
-li {
-  display: block;
-  padding: 20px;
-  border: 1px solid gray;
-  margin: 0;
-  width: 100%;
-  box-sizing: border-box;
-}
-
 .slide-enter {
   opacity: 0;
 }
@@ -58,5 +56,9 @@ li {
   to {
     transform: translateX(0);
   }
+}
+
+li {
+  margin-bottom: 1px;
 }
 </style>

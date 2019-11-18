@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div class="absolute skewedBox bg-purple-600 z-0 w-full h-full"></div>
-    <div class="container m-auto pt-10 ">
+    <div class="m-auto pt-10 max-w-6xl">
       <Posts :class="rowClasses" />
       <Actions :class="rowClasses" />
     </div>
@@ -20,7 +20,8 @@ export default {
         "relative",
         "md:w-6/12",
         "md:float-left",
-        "p-10",
+        "p-5",
+        "md:p-10",
         "z-auto",
         "object-right",
         "m-auto"
@@ -38,5 +39,10 @@ export default {
 .skewedBox {
   top: -85%;
   transform: skew(0deg, -10deg);
+}
+.white-box {
+  min-height: 80px;
+  align-items: center;
+  display: inline-flex;
 }
 </style>

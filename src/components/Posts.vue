@@ -1,6 +1,6 @@
 <template>
   <section id="posts">
-    <h1>Sortable Post List</h1>
+    <h1 class="text-xl text-white mb-5">Sortable Post List</h1>
     <ul>
       <transition-group name="slide">
         <template v-for="(post, index) in posts">
@@ -79,15 +79,6 @@ export default {
 </script>
 
 <style scoped>
-li {
-  display: block;
-  padding: 20px;
-  border: 1px solid gray;
-  margin: 15px 0;
-  width: 100%;
-  box-sizing: border-box;
-}
-
 .slide-move {
   transition: transform 0.5s cubic-bezier(0.55, 0, 0.1, 1);
 }
