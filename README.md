@@ -43,5 +43,8 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ## Credits
 
+I found the following resources usefull while working on the project:
+
 - Mocking axios: https://www.leighhalliday.com/mocking-axios-in-jest-testing-async-functions
 - Testing Vue Components: https://github.com/vueschool/testing-vue-components
+- Vue Animation: https://github.com/vuejs/vue-animated-list
