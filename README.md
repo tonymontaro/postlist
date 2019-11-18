@@ -1,7 +1,12 @@
 [![Build Status](https://travis-ci.org/tonymontaro/postlist.svg?branch=master)](https://travis-ci.org/tonymontaro/postlist)
 [![Maintainability](https://api.codeclimate.com/v1/badges/8c3f7092185aafba9999/maintainability)](https://codeclimate.com/github/tonymontaro/postlist/maintainability)
+[![codecov](https://codecov.io/gh/tonymontaro/postlist/branch/master/graph/badge.svg)](https://codecov.io/gh/tonymontaro/postlist)
 
 # postlist
+
+Sortable Post List - VueJs Challenge demonstrating working knowledge of Vuex, Animation, State Management, Events, Testing, and CI/CD.
+
+[Live Demo](https://postlist-temper.netlify.com/)
 
 ### Project Management
 
@@ -25,10 +30,22 @@ npm run serve
 npm run build
 ```
 
-### Run your unit tests
+### Run unit tests
 
 ```
 npm run test:unit
+```
+
+#### Run tests with Coverage report
+
+```
+npm run test:coverage
+```
+
+#### Run tests and watch files for changes (auto re-run)
+
+```
+npm run test:watch
 ```
 
 ### Lints and fixes files
@@ -36,10 +53,6 @@ npm run test:unit
 ```
 npm run lint
 ```
-
-### Customize configuration
-
-See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ## Credits
 

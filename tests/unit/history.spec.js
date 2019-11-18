@@ -2,7 +2,6 @@ import Vuex from "vuex";
 import { createLocalVue, mount, shallowMount } from "@vue/test-utils";
 
 import History from "@/components/History";
-import historyStore from "@/store/history";
 
 const localVue = createLocalVue();
 localVue.use(Vuex);
@@ -48,5 +47,18 @@ describe("History Component", () => {
     });
     expect(wrapper.findAll("historyitem-stub").length).toBe(4);
     expect(wrapper).toMatchSnapshot();
+  });
+
+  test("clicking the Time travel button calls the replayHistory mutation", () => {
+    wrapper = mount(History, {
+      localVue,
+      store,
+      computed: {
+        history: () => testHistoryItems
+      }
+    });
+
+    wrapper.find("button").trigger("click");
+    expect(mutations["posts/replyHistory"]).toHaveBeenCalledTimes(1);
   });
 });

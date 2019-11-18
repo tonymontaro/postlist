@@ -99,10 +99,10 @@ describe("Methods", () => {
     });
   });
 
-  test("getPosts calls the getPosts action", () => {
+  test("mounting the Posts component calls the getPosts async action", () => {
     const expected = [{ id: 1, title: "Title" }];
     axios.get.mockResolvedValue({ data: expected });
-    const wrapper = mount(Posts, {
+    mount(Posts, {
       localVue,
       store
     });
